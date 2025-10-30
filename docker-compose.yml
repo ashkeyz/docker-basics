@@ -1,0 +1,22 @@
+services:
+  db:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - mon-reseau
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8082:80"
+    networks:
+      - mon-reseau
+
+volumes:
+  db_data:
+
+networks:
+  mon-reseau:
